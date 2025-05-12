@@ -10,5 +10,6 @@ public class Mavenproject1 {
         System.out.println("Hello World!!!");
         Estudiante e1 = new Estudiante();
         e1.mostrar();
+        System.out.println("nuevo usuario");
     }
 }
