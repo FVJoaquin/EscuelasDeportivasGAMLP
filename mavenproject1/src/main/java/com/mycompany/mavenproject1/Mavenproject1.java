@@ -4,13 +4,11 @@
 
 package com.mycompany.mavenproject1;
 
-/**
- *
- * @author Joaquin
- */
 public class Mavenproject1 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!!!");
+        Estudiante e1 = new Estudiante();
+        e1.mostrar();
     }
 }
