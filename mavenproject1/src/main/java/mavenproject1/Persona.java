@@ -66,7 +66,7 @@ public
     void mostrar() {
         System.out.println(nombre+" "+paterno+" "+materno+" CI:"+id+" edad: "+edad);
         if(!observaciones.equals(""))
-            System.out.println("Observacion: "+observaciones);
+            System.out.println("Obsss: "+observaciones);
     }
     
     

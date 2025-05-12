@@ -40,7 +40,7 @@ public
 public
     void mostrar() {
         super.mostrar();
-        System.out.println("estado... "+estado+" Inscripciones: "+nroInscrip);
+        System.out.println("est... "+estado+" Inscripciones: "+nroInscrip);
         for(int j=1;j<=nroInscrip;j++)
             System.out.print(inscrip[j]);
     }
