@@ -12,13 +12,16 @@ public
      Persona() {
          nombre="juan";
          paterno="perez";
-         materno="lopez";
+         materno="loza";
          genero="hombre";
          observaciones="";
          id=789456;
          edad=15;
      }
-// GETTERS - SETTERS
+// GETTERS - SETTERS jordy alejandro chacon
+    public String getNombreCompleto() {
+        return nombre+" "+paterno+" "+materno;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -61,7 +64,7 @@ public
     public void setEdad(int edad) {
         this.edad = edad;
     }
-// METODOS
+// METODOS jordy alejandro chacon
 public
     void mostrar() {
         System.out.println(nombre+" "+paterno+" "+materno+" CI:"+id+" edad: "+edad);

@@ -6,22 +6,28 @@ package mavenproject1;
 
 public class Estudiante extends Persona {
 private
-    String[] inscrip = new String[50];  //to Inscripcion
+    Inscripcion[] inscrip = new Inscripcion[50];  //to Inscripcion
     int nroInscrip;
     String estado;
 public
     Estudiante() {
-        nroInscrip=0;
-        estado="habilitado";
+        nroInscrip = 0;
+        estado = "habilitado";
     }
-//GETTERS - SETTERS
-    public String getInscrip(int i) {
+    Estudiante(String a,String b,String c,int e,int d) {
+        nombre = a;
+        paterno = b;
+        materno = c;
+        edad = e;
+        id = d;
+        estado = "habilitado";
+        nroInscrip = 0;
+    }
+//GETTERS - SETTERS jordy alejandro chacon
+    public Inscripcion getInscrip(int i) {
         return inscrip[i];
     }
-    public void setInscrip(String ins,int i) {
-        nroInscrip++;
-        for(int j=nroInscrip;j>i;j--)
-            inscrip[j]=inscrip[j-1];
+    public void setInscrip(Inscripcion ins,int i) {
         this.inscrip[i] = ins;
     }
     public int getNroInscrip() {
@@ -36,14 +42,37 @@ public
     public void setEstado(String estado) {
         this.estado = estado;
     }
-//METODOS    
+    
+//METODOS jordy alejandro chacon
 public
     void mostrar() {
         super.mostrar();
-        System.out.println("estado: "+estado+" Inscripciones: "+nroInscrip);
-        for(int j=1;j<=nroInscrip;j++)
-            System.out.println(inscrip[j]);
+        System.out.println("ESTUDIANTE estado: "+estado+" Inscripciones: "+nroInscrip);
     }
+    void mostrarInscrip() {
+        if(nroInscrip != 0) 
+            for(int i=1;i<=nroInscrip;i++) {
+                inscrip[i].mostrarCurso();
+                inscrip[i].getHorario().mostrar();
+            }
+    }
+    void mostrarTodo() {
+        mostrar();
+        mostrarInscrip();
+    }
+    void inscribir(Inscripcion I,Curso c) {
+        if(c.getNroInscripciones() < c.getCantidadCupo() 
+                && getEstado().equals("habilitado")) {
+            I.setCurso(c);
+            I.setE(this);
+            c.agregar(I);
+            nroInscrip++;
+            inscrip[nroInscrip] = I;
+        }
+    }
+    
+    
+    
     
     
 }

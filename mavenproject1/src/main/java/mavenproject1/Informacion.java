@@ -11,4 +11,19 @@ public
     Informacion() {
         comunicado = fecha = "";
     }
+// GETTERS-SETTERS bryan patty tancara
+    public String getComunicado() {
+        return comunicado;
+    }
+    public void setComunicado(String comunicado) {
+        this.comunicado = comunicado;
+    }
+    public String getFecha() {
+        return fecha;
+    }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+// METODOS bryan patty tancara
+    
 }
