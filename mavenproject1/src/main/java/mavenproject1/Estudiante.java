@@ -14,12 +14,13 @@ public
         nroInscrip = 0;
         estado = "habilitado";
     }
-    Estudiante(String a,String b,String c,int e,int d) {
+    Estudiante(String a,String b,String c,int e,int d,String g) {
         nombre = a;
         paterno = b;
         materno = c;
         edad = e;
         id = d;
+        genero = g;
         estado = "habilitado";
         nroInscrip = 0;
     }
@@ -46,8 +47,9 @@ public
 //METODOS jordy alejandro chacon
 public
     void mostrar() {
+        System.out.print("ESTUDIANTE ");
         super.mostrar();
-        System.out.println("ESTUDIANTE estado: "+estado+" Inscripciones: "+nroInscrip);
+        System.out.println(" estado: "+estado+" Inscripciones: "+nroInscrip);
     }
     void mostrarInscrip() {
         if(nroInscrip != 0) 
@@ -63,9 +65,8 @@ public
     void inscribir(Inscripcion I,Curso c) {
         if(c.getNroInscripciones() < c.getCantidadCupo() 
                 && getEstado().equals("habilitado")) {
-            I.setCurso(c);
             I.setE(this);
-            c.agregar(I);
+            c.agregarInsc(I);
             nroInscrip++;
             inscrip[nroInscrip] = I;
         }

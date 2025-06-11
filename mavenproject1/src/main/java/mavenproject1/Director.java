@@ -13,10 +13,16 @@ public
         fechaFin = "31/12/2025";
         responsabilidades = "";
     }
-    Director(String ini,String fin,String resp) {
+    Director(String a,String b,String c,int e,int d,String g,String ini,String fin) {
+        nombre = a;
+        paterno = b;
+        materno = c;
+        edad = e;
+        id = d;
+        genero = g;
         fechaInicio = ini;
         fechaFin = fin;
-        responsabilidades = resp;
+        responsabilidades = "";
     }
 // GETTERS - SETTERS jordy alejandro chacon
     public String getFechaInicio() {
@@ -41,8 +47,9 @@ public
 // METODOS jordy alejandro chacon
 public
     void mostrar() {
+        System.out.print("DIRECTOR ");
         super.mostrar();
-        System.out.println("DIRECTOR Inicio: "+fechaInicio+" Fin: "+fechaFin);
+        System.out.println(" Periodo: "+fechaInicio+"-"+fechaFin);
     }
     
     

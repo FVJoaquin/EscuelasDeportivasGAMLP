@@ -8,7 +8,7 @@ public class EscuelaDeportiva {
 private
     String nombre,direccion;
     int distrito;
-    String[] deportes = new String[50];
+    String[] deportes = new String[51];
     int nroDeportes;
     Director dir;
     Entrenador[] plantel = new Entrenador[51];
@@ -17,15 +17,15 @@ private
     int nroEstudiantes,nroCuposEstud;
     Curso[] cursos = new Curso[51];
     int nroCursos;
-    Recurso[] recursos = new Recurso[100];
+    Recurso[] recursos = new Recurso[101];
     int nroRecursos;
 public
     EscuelaDeportiva() {
         nombre = "escuela 001";
         direccion = "calle 1";
         distrito = 10;
-        nroDeportes = 1;
-        nroEntrenadores = nroEstudiantes = nroCursos = nroRecursos = 0;
+        dir = new Director();
+        nroDeportes = nroEntrenadores = nroEstudiantes = nroCursos = nroRecursos = 0;
         nroCuposEntren = 50;
         nroCuposEstud = 3000;
     }
@@ -68,10 +68,10 @@ public
     public void setNroDeportes(int nroDeportes) {
         this.nroDeportes = nroDeportes;
     }
-    public Director getA() {
+    public Director getDir() {
         return dir;
     }
-    public void setA(Director a) {
+    public void setDir(Director a) {
         this.dir = a;
     }
     public Entrenador getPlantel(int i) {
@@ -110,12 +110,23 @@ public
     public void setNroCuposEstud(int nroCuposEstud) {
         this.nroCuposEstud = nroCuposEstud;
     }
+    public Curso getCurso(String cursoT) {
+        try {
+            for(int i=1;i<=nroCursos;i++)
+                if(cursos[i].getNombre().equals(cursoT))
+                    return cursos[i];
+        } catch(Exception e) {
+            System.out.println("Algo salio mal!!!");
+        } 
+        return new Curso();
+    }
     public Curso getCursos(int i) {
         return cursos[i];
     }
     public void setCursos(Curso cursoN,int i) {
         this.cursos[i] = cursoN;
     }
+    
     public int getNroCursos() {
         return nroCursos;
     }
@@ -137,7 +148,7 @@ public
 // METODOS bryan patty tancara
 public
     void mostrar() {
-        System.out.println("\nESCUELA "+nombre+" "+"direccion: "+direccion+
+        System.out.println("\nESCUELA "+nombre+" "+"dir: "+direccion+
                 " DISTRITO "+distrito);
         if(dir != null)
             dir.mostrar();
@@ -184,13 +195,9 @@ public
         mostrarEstudiantes();
     }
     
-    void inscribirEstudiante(String a,String b,String c,int e,int d) {
+    void inscribirEstudiante(Estudiante Est) {
         nroEstudiantes++; 
-        ests[nroEstudiantes] = new Estudiante(a,b,c,e,d); 
-    }
-    void inscribirEstudiante(Estudiante E) {
-        nroEstudiantes++; 
-        ests[nroEstudiantes] = E; 
+        ests[nroEstudiantes] = Est; 
     }
     void agregarCurso(Curso curso) {
         nroCursos++;
@@ -199,6 +206,9 @@ public
     void agregarEntrenador(Entrenador ent) {
         nroEntrenadores++;
         plantel[nroEntrenadores] = ent;
+    }
+    void agregarDirector(Director dirNuevo) {
+        this.setDir(dirNuevo);
     }
     
     

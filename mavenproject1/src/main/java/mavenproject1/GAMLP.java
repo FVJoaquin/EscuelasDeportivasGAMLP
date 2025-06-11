@@ -46,6 +46,53 @@ public
         this.info = info;
     }
 // METODOS bryan patty tancara
-    
-    
+    public
+           void agregarEscuela(EscuelaDeportiva E,Director D,Curso C) {
+               E.agregarCurso(C);
+               E.agregarDirector(D);
+               nroEscuelas++;
+               escuelas[nroEscuelas] = E;
+           }
+           void agregarCurso(EscuelaDeportiva E,Curso C) {
+               E.agregarCurso(C);
+           }
+           void agregarDirector(EscuelaDeportiva E,Director D) {
+               E.setDir(D);
+           }
+           void agregarEntrenador(EscuelaDeportiva E,String cursoT,Entrenador Ent) {
+               E.agregarEntrenador(Ent);
+               E.getCurso(cursoT).asignarEntrenador(Ent);
+           }
+           void inscribirEst(EscuelaDeportiva E,String cursoT,Estudiante Est,
+                   String dt,int ncl,int nnt) {
+               Curso tempo = E.getCurso(cursoT);
+               Inscripcion I = new Inscripcion(tempo.getDeporte(),tempo.getHorario(),dt,ncl,nnt);
+               tempo.agregarInsc(I);
+               E.inscribirEstudiante(Est);
+               Est.setNroInscrip(Est.getNroInscrip()+1);
+               Est.setInscrip(I, Est.getNroInscrip());
+               I.setE(Est);
+               I.setCurso(tempo.getNombre());
+           }
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
 }

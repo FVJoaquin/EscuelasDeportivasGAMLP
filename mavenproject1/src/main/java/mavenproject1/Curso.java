@@ -6,24 +6,28 @@ package mavenproject1;
 
 public class Curso {
 private
-    String nombre,deporte;
+    String nombre,deporte,genero;
     int[] rangoEdad = new int[3];
+    Horario horaCurso;
     Entrenador e;
     Inscripcion[] inscrip = new Inscripcion[51];
     int nroInscripciones,cantidadCupo;
 public
     Curso() {
-        nombre = "100A";
-        deporte = "por designar";
+        nombre = deporte = genero = "";
         cantidadCupo = 50;
         nroInscripciones = 0;
+        horaCurso = new Horario();
     }
-    Curso(String nom,String dep,int min,int max,int cap) {
+    Curso(String nom,String dep,String g,int min,int max,int cap,
+            String hini,String hfin,String c1,String c2) {
         nombre = nom;
         deporte = dep;
-        cantidadCupo = cap;
+        genero = g;
         rangoEdad[1] = min;
         rangoEdad[2] = max;
+        cantidadCupo = cap;
+        horaCurso = new Horario(hini,hfin,c1,c2);
         nroInscripciones = 0;
     }
 // GETTERS - SETTERS bryan patty tancara
@@ -39,11 +43,23 @@ public
     public void setDeporte(String deporte) {
         this.deporte = deporte;
     }
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String g) {
+        genero = g;
+    }
     public int getRangoEdad(int i) {
         return rangoEdad[i];
     }
     public void setRangoEdad(int i, int edad) {
         this.rangoEdad[i] = edad;
+    }
+    public Horario getHorario() {
+        return horaCurso;
+    }
+    public void setHorario(Horario h) {
+        this.horaCurso = h;
     }
     public Entrenador getE() {
         return e;
@@ -72,9 +88,9 @@ public
 // METODOS bryan patty tancara
 public
     void mostrar() {
-        System.out.println("CURSO "+nombre+" ("+deporte+" "+rangoEdad[1]+"-"
-                +rangoEdad[2]+" anos) Entrenador: "+e.getNombreCompleto()+", "
-                +nroInscripciones+" alumnos");
+        System.out.println("CURSO "+nombre+" ("+deporte+" "+genero+" "+
+                rangoEdad[1]+"-"+rangoEdad[2]+" anos) Entrenador: "+
+                e.getNombreCompleto()+", "+nroInscripciones+" alumnos");
         }
     void mostrarEntrenador() {
         if(e != null)
@@ -82,7 +98,7 @@ public
     }
     void mostrarAlumnos() {
         if (nroInscripciones != 0) {
-            inscrip[1].getHorario().mostrar();
+            horaCurso.mostrar();
             for(int i=1;i<=nroInscripciones;i++)
                 inscrip[i].mostrarEstudiante();
         }
@@ -95,7 +111,7 @@ public
         mostrarEntrenador();
         mostrarAlumnos();
     }
-    void agregar(Inscripcion I) {
+    void agregarInsc(Inscripcion I) {
         if(nroInscripciones < cantidadCupo) {
             nroInscripciones ++;
             inscrip[nroInscripciones] = I;
@@ -104,6 +120,7 @@ public
     void llenar() {
         System.out.print("nombre Curso: "); setNombre(Leer.dato());
         System.out.print("Deporte: ");      setDeporte(Leer.dato());
+        System.out.print("Genero: ");       setGenero(Leer.dato());
         System.out.print("edad minima: ");  setRangoEdad(1,Leer.datoInt());
         System.out.print("edad maxima: ");  setRangoEdad(2,Leer.datoInt());
         System.out.print("cupo estuds: ");  setCantidadCupo(Leer.datoInt());
@@ -112,7 +129,7 @@ public
     }
     void asignarEntrenador(Entrenador ent) {
         e = ent;
-        e.setC(this,e.getNroCursos()+1);
+        e.setCurso(this,e.getNroCursos()+1);
         e.setNroCursos(e.getNroCursos()+1);
     }
     

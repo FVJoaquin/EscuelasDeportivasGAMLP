@@ -7,13 +7,13 @@ package mavenproject1;
 public class Inscripcion {
 private
     Estudiante e;
-    Curso curso;
+    String curso;
     Horario horario;
     String fechaInscripcion,estado,deporte;
-    String[] asistencia = new String[100];
+    String[] asistencia = new String[101];
     int nroAsist;
     int nroClases;
-    int[] notas = new int[10];
+    int[] notas = new int[11];
     int nroNotas,notaFinal;
     String observaciones;
     Inscripcion() {
@@ -22,10 +22,9 @@ private
         fechaInscripcion = observaciones = "";
         nroClases = nroNotas = notaFinal = 0;
     }
-    Inscripcion(String dep,String h1, String h2, 
-            String d1,String d2,String fec,int ncl,int nnt) {
+    Inscripcion(String dep,Horario h,String fec,int ncl,int nnt) {
         deporte = dep;
-        horario = new Horario(h1,h2,d1,d2);
+        horario = h;
         fechaInscripcion = fec;
         observaciones = "";
         estado = "habilitado";
@@ -40,10 +39,10 @@ private
     public void setE(Estudiante e) {
         this.e = e;
     }
-    public Curso getCurso() {
+    public String getCurso() {
         return curso;
     }
-    public void setCurso(Curso curso) {
+    public void setCurso(String curso) {
         this.curso = curso;
     }
     public Horario getHorario() {
@@ -107,25 +106,28 @@ public
                 " "+e.getPaterno()+" "+e.getEstado());
         System.out.println("INSCRIPCION "+fechaInscripcion+" "+estado);
         System.out.println("Asistencia:"+nroAsist+"/"+nroClases);
-        System.out.print("Notas: ");
-        for(int i=1;i<=nroNotas;i++) 
-            System.out.print(" "+notas[i]);            
-        System.out.println("    "+notaFinal);
+        System.out.print("Notas:");
+        int cont=0;
+        for(int i=1;i<=nroNotas;i++) {
+            System.out.print(" "+notas[i]);
+            notas[0]=notas[0]+notas[i];
+            cont++;
+        }
+        notaFinal = notas[0]/cont;
+        System.out.println(" = "+notaFinal);
         if(observaciones != "")
             System.out.println("Obs: "+observaciones);
     }
     void mostrarCurso() {
-        System.out.println("Curso: "+curso.getNombre()+" "+curso.getDeporte());
-        System.out.println("INSCRIPCION "+fechaInscripcion+" "+estado);
-        System.out.println("Asistencia:"+nroAsist+"/"+nroClases);
-        System.out.print("Notas: ");
+        System.out.print("Curso: "+curso+" "+deporte+" "+fechaInscripcion+" "+estado);
+        System.out.print(" Asist:"+nroAsist+"/"+nroClases+" Notas:");
         for(int i=1;i<=nroNotas;i++) 
             System.out.print(" "+notas[i]);            
-        System.out.println("    "+notaFinal);
+        System.out.println(" = "+notaFinal);
         if(observaciones != "")
             System.out.println("Obs: "+observaciones);
     }
-    void asistencia() { 
+    void asistencia() {
         System.out.print("Asistencia:");
         String a = Leer.dato();
         if(a != null)

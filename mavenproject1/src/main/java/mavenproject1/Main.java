@@ -5,40 +5,30 @@ package mavenproject1;
 public class Main {
 
     public static void main(String[] args) {
+        GAMLP Gamlp = new GAMLP();
+        
         // Creacion de escuela
-        EscuelaDeportiva escuela1 = new EscuelaDeportiva("Don Bosco","calle 78",7);
-        escuela1.mostrarTodo();         //1ra impresion
-        escuela1.inscribirEstudiante("Jordy","Rodriguez","Chacon",19,123456);
-        escuela1.mostrarTodo();         //2da impresion
-        // Creacion de cursos y entrenadores
-        Curso curso101 = new Curso("101","futbol",15,18,45);
-        Curso curso102 = new Curso("102","volley",14,20,50);
-        Entrenador ent1 = new Entrenador("Jose","Flores","Mamani",42,789789,
-                "05/03/2025","20/06/2025");
-        escuela1.agregarEntrenador(ent1);
-        escuela1.agregarEntrenador(new Entrenador("Andrea","Perez","Loza",38,456456,
-                "08/03/2025","20/06/2025"));
-        curso101.asignarEntrenador(ent1);
-        curso102.asignarEntrenador(escuela1.getPlantel(2));
-        escuela1.agregarCurso(curso101);
-        escuela1.agregarCurso(curso102);
-        //Inscripcion de ESTUDIANTE a ESCUELA
-        Inscripcion Futbol101 = new Inscripcion("futbol","10:00","12:00","Lunes","Miercoles",
-            "01/02/2025",50,4);
-        Inscripcion Volley102 = new Inscripcion("volley","12:00","14:00","Lunes","Miercoles",
-            "01/02/2025",50,4);
-        Estudiante est2 = new Estudiante();
-        Estudiante est3 = new Estudiante("Joaquin","Flores","Vasquez",22,125897);
-        escuela1.inscribirEstudiante(est2);
-        escuela1.inscribirEstudiante(est3);
-        escuela1.inscribirEstudiante("Bryan","Patty","Tancara",20,645645);
-        escuela1.mostrarTodo();         //3ra impresion
-        //Inscripcion de ESTUDIANTE a CURSO
-        escuela1.getEsts(1).inscribir(Futbol101, curso101);
-        est3.inscribir(Volley102, curso102);
-        escuela1.getEsts(4).inscribir(Futbol101, curso101);
-        //Mostrar escuela
-        escuela1.mostrarTodo();
+        Gamlp.agregarEscuela(new EscuelaDeportiva("Don Bosco","calle 78",7),
+                new Director("Bruno","Cifuentes","Palacios",54,784541,"H","15/01/2025","15/01/2026"),
+                new Curso("101A","Futsal","H",12,15,20,"10:00","12:00","Lunes","Miercoles"));
+        Gamlp.agregarCurso(Gamlp.getEscuelas(1),
+                new Curso("102C","Volley","M",15,20,50,"10:00","12:00","Martes","Jueves"));
+
+        Gamlp.agregarEntrenador(Gamlp.getEscuelas(1),"101A",
+                new Entrenador("Santiago","Correa","Toledo",42,245877,"H","30/01/2025","20/12/2025"));        
+        Gamlp.agregarEntrenador(Gamlp.getEscuelas(1),"102C",
+                new Entrenador("Renata", "Arias", "Gallardo",39,245877,"M","30/01/2025","20/12/2025"));
+        
+        Gamlp.inscribirEst(Gamlp.getEscuelas(1),"101A",
+                new Estudiante("Zoe","Figueroa","Navarro",13,786998,"H"),"01/02/2025",25,3);
+        Gamlp.inscribirEst(Gamlp.getEscuelas(1),"101A",
+                new Estudiante("Thiago","Herrera","Luna",14,786998,"H"),"01/02/2025",25,3);
+        Gamlp.inscribirEst(Gamlp.getEscuelas(1),"102C",
+                new Estudiante("Isabel","Mendez","Rosales",17,786998,"M"),"01/02/2025",25,3);
+        Gamlp.inscribirEst(Gamlp.getEscuelas(1),"102C",
+                new Estudiante("Mariana","Avini","Pino",16,786998,"M"),"01/02/2025",25,3);
+        
+        Gamlp.getEscuelas(1).mostrarTodo();
         
         
     }

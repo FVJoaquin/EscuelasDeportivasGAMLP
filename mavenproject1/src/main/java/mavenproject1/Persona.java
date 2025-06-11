@@ -13,7 +13,7 @@ public
          nombre="juan";
          paterno="perez";
          materno="loza";
-         genero="hombre";
+         genero="H";
          observaciones="";
          id=789456;
          edad=15;
@@ -67,7 +67,7 @@ public
 // METODOS jordy alejandro chacon
 public
     void mostrar() {
-        System.out.println(nombre+" "+paterno+" "+materno+" CI:"+id+" edad: "+edad);
+        System.out.print(nombre+" "+paterno+" "+materno+" CI:"+id+" edad:"+edad);
         if(!observaciones.equals(""))
             System.out.println("Observaciones: "+observaciones);
     }

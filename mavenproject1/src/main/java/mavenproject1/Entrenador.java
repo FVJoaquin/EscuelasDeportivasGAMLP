@@ -7,7 +7,7 @@ package mavenproject1;
 public class Entrenador extends Persona {
 private
     String fechaInicio,fechaFin;
-    Curso[] C = new Curso[30];
+    Curso[] cursos = new Curso[30];
     int nroCursos;
 public
     Entrenador() {
@@ -15,12 +15,13 @@ public
         fechaFin = "31/12/2025";
         nroCursos = 0;
     }
-    Entrenador(String a,String b,String c,int e,int d,String ini,String fin) {
+    Entrenador(String a,String b,String c,int e,int d,String g,String ini,String fin) {
         nombre = a;
         paterno = b;
         materno = c;
         edad = e;
         id = d;
+        genero = g;
         fechaInicio = ini;
         fechaFin = fin;
         nroCursos = 0;
@@ -38,11 +39,11 @@ public
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
-    public Curso getC(int i) {
-        return C[i];
+    public Curso getCurso(int i) {
+        return cursos[i];
     }
-    public void setC(Curso curso,int i) {
-        this.C[i] = curso;
+    public void setCurso(Curso curs,int i) {
+        this.cursos[i] = curs;
     }
     public int getNroCursos() {
         return nroCursos;
@@ -53,12 +54,13 @@ public
 // METODOS jordy alejandro chacon
 public
     void mostrar() {
+        System.out.print("ENTRENADOR ");
         super.mostrar();
-        System.out.println("ENTRENADOR Inicio: "+fechaInicio+" Fin: "+fechaFin+" nroCursos: "+nroCursos);
+        System.out.println(" Periodo: "+fechaInicio+"-"+fechaFin+" nroCursos: "+nroCursos);
     }
     void mostrarCursos() {
         if(nroCursos != 0)
             for(int i=1;i<=nroCursos;i++)
-                C[i].mostrar();
+                cursos[i].mostrar();
     }
 }
