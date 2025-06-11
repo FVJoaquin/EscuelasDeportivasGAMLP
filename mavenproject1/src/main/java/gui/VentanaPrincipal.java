@@ -13,7 +13,7 @@ public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal() {
         initComponents();
         setTitle("Sistema de Escuelas Deportivas GAMLP");
-        setSize(500, 600);
+        setSize(500, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -30,14 +30,17 @@ public class VentanaPrincipal extends JFrame {
         titulo1 = new javax.swing.JLabel();
         btnAgregarEscuela = new javax.swing.JButton();
         btnEscuela = new javax.swing.JButton();
-        btnEntrenador = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         titulo2 = new javax.swing.JLabel();
-        titulo3 = new javax.swing.JLabel();
         btnAgregarCurso = new javax.swing.JButton();
         btnVerListaEscuelas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnAgregarCurso1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        btnAgregarCurso2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,17 +54,10 @@ public class VentanaPrincipal extends JFrame {
             }
         });
 
-        btnEscuela.setText("Gestion de Escuelas");
+        btnEscuela.setText("Agregar Entrenador");
         btnEscuela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEscuelaActionPerformed(evt);
-            }
-        });
-
-        btnEntrenador.setText("Panel de Entrenadores");
-        btnEntrenador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrenadorActionPerformed(evt);
             }
         });
 
@@ -74,9 +70,6 @@ public class VentanaPrincipal extends JFrame {
 
         titulo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo2.setText("Gestion Escuela");
-
-        titulo3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        titulo3.setText("Panel Entrenadores");
 
         btnAgregarCurso.setText("Agregar Curso");
         btnAgregarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -92,43 +85,85 @@ public class VentanaPrincipal extends JFrame {
             }
         });
 
+        jButton1.setText("Ver Lista Estudiantes");
+
+        btnAgregarCurso1.setText("Agregar Curso");
+        btnAgregarCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCurso1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Ver Lista Estudiantes");
+
+        jButton3.setText("Ver Lista Entrenadores");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Ver Lista Cursos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        btnAgregarCurso2.setText("Agregar Obs Estudiante");
+        btnAgregarCurso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCurso2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEntrenador)
-                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(titulo3)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnVerListaEscuelas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnAgregarEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(60, 60, 60)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnAgregarEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(60, 60, 60)
+                                                .addComponent(btnVerListaEscuelas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 93, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 161, Short.MAX_VALUE)
+                        .addGap(0, 373, Short.MAX_VALUE)
+                        .addComponent(btnExit)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(156, 156, 156))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnExit)
-                                .addGap(20, 20, 20))))))
+                                .addGap(59, 59, 59)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAgregarCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAgregarCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,26 +171,32 @@ public class VentanaPrincipal extends JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(titulo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarEscuela)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarEscuela)
+                    .addComponent(btnVerListaEscuelas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAgregarCurso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnVerListaEscuelas)
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarCurso)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo2)
-                .addGap(93, 93, 93)
-                .addComponent(btnEscuela)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titulo3)
-                .addGap(60, 60, 60)
-                .addComponent(btnEntrenador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEscuela)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(btnAgregarCurso1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarCurso2)
+                    .addComponent(jButton4))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnExit)
-                .addGap(38, 38, 38))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -178,12 +219,6 @@ public class VentanaPrincipal extends JFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrenadorActionPerformed
-        // TODO add your BOTON ENTRENADORES code here:
-        FormularioEntrenador form3 = new FormularioEntrenador();
-        form3.setVisible(true);
-    }//GEN-LAST:event_btnEntrenadorActionPerformed
-
     private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCursoActionPerformed
@@ -191,6 +226,22 @@ public class VentanaPrincipal extends JFrame {
     private void btnVerListaEscuelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerListaEscuelasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerListaEscuelasActionPerformed
+
+    private void btnAgregarCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCurso1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCurso1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnAgregarCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCurso2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCurso2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,15 +280,18 @@ public class VentanaPrincipal extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCurso;
+    private javax.swing.JButton btnAgregarCurso1;
+    private javax.swing.JButton btnAgregarCurso2;
     private javax.swing.JButton btnAgregarEscuela;
-    private javax.swing.JButton btnEntrenador;
     private javax.swing.JButton btnEscuela;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnVerListaEscuelas;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
-    private javax.swing.JLabel titulo3;
     // End of variables declaration//GEN-END:variables
 }

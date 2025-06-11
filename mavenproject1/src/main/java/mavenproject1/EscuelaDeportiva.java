@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.Serializable;
 
-public class EscuelaDeportiva {
+public class EscuelaDeportiva implements Serializable  {
 private
     String nombre,direccion;
     int distrito;

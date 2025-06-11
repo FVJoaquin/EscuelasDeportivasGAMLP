@@ -34,8 +34,8 @@ public class Main {
                 new Estudiante("Mariana","Avini","Pino",16,786998,"M"),"01/02/2025",25,3);
         Gamlp.getEscuelas(1).mostrarTodo();
         
-        //VentanaPrincipal vent = new VentanaPrincipal();
-        //vent.setVisible(true);
+        VentanaPrincipal vent = new VentanaPrincipal();
+        vent.setVisible(true);
         
         boolean sw = true;
         while(sw) {

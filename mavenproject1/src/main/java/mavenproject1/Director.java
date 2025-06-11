@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.Serializable;
 
-public class Director extends Persona {
+public class Director extends Persona implements Serializable {
 private
     String fechaInicio,fechaFin,responsabilidades;
 public
