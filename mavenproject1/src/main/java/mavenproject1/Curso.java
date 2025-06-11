@@ -19,6 +19,7 @@ public
         nroInscripciones = 0;
         horaCurso = new Horario();
     }
+public    
     Curso(String nom,String dep,String g,int min,int max,int cap,
             String hini,String hfin,String c1,String c2) {
         nombre = nom;

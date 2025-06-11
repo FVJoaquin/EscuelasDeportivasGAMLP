@@ -29,6 +29,7 @@ public
         nroCuposEntren = 50;
         nroCuposEstud = 3000;
     }
+public    
     EscuelaDeportiva(String nom,String dir,int dist) {
         nombre = nom;
         direccion = dir;

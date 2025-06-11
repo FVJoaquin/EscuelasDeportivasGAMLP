@@ -13,6 +13,7 @@ public
         fechaFin = "31/12/2025";
         responsabilidades = "";
     }
+public
     Director(String a,String b,String c,int e,int d,String g,String ini,String fin) {
         nombre = a;
         paterno = b;

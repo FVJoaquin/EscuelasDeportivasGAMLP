@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
+import java.util.Scanner;
 
-public class GAMLP {
+public class GAMLP implements Serializable {
 private
     EscuelaDeportiva[] escuelas = new EscuelaDeportiva[50];
     int nroEscuelas,nroRecursos;
@@ -15,6 +17,9 @@ public
         nroEscuelas = nroRecursos = 0;
     }
 // GETTERS-SETTERS bryan patty tancara
+    public EscuelaDeportiva[] getAllEscuelas() {
+        return escuelas;
+    }
     public EscuelaDeportiva getEscuelas(int i) {
         return escuelas[i];
     }
