@@ -151,8 +151,8 @@ public
                 " ("+rangoEdad[1]+"-"+rangoEdad[2]+" anos) ");
     }
 // VENTANA
-    public String mostrarMin2V() {
-        return "Curso: " + nombre + " (" + genero + ", edades " + getRangoEdad(1) + "-" + getRangoEdad(2) + ")\n";
+    public String mostrarMin3V() {
+        return "Curso: " + nombre+" "+deporte+" (" + genero + ", edades " + getRangoEdad(1) + "-" + getRangoEdad(2) + ")\n";
     }
     
 }

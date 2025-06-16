@@ -120,7 +120,7 @@ public
                E.agregarEntrenador(Ent);
                E.getCurso(cursoT).asignarEntrenador(Ent);
            }
-           void inscribirEst(String escuelaT,String cursoT,Estudiante Est,
+    public void inscribirEst(String escuelaT,String cursoT,Estudiante Est,
                              String dt,int ncl,int nnt) {
                EscuelaDeportiva E = getEscuela(escuelaT);
                Curso tempo = E.getCurso(cursoT);
@@ -233,7 +233,8 @@ public
             sb.append(escuelas[i].mostrarEstsEsc());
         return sb.toString();
     }
-    public String mostrarEj01Ventana() {    //boton Ranking Deportes EJ01
+    //EJ01 Ventana Ranking Deportes
+    public String mostrarEj01Ventana() {    
         ordenarDeportes();
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= nroDeportes; i++) {
@@ -241,7 +242,8 @@ public
         }
         return sb.toString();
     }
-    public String mostrarEj02Ventana(String apellido) { //boton EJ02
+    //EJ02 Ventana Buscar por apellido
+    public String mostrarEj02Ventana(String apellido) { 
         StringBuilder sb = new StringBuilder();
         boolean encontrado = false;
 
@@ -260,6 +262,7 @@ public
             sb.append("No se encontraron estudiantes con el apellido: ").append(apellido);
         return sb.toString();
     }
+    //EJ03 Ventanan Buscar escuelas por distrito
     public String mostrarEj03Ventana(int d) {
         StringBuilder sb = new StringBuilder();
         boolean sw = true;
@@ -273,6 +276,7 @@ public
             sb.append("No se encontraron escuelas en el distrito ").append(d);
         return sb.toString();
     }
+    //EJ04 Ventana Crusos con mas estudiantes
     public String mejoresCursosTexto() {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= nroEscuelas; i++) {
@@ -281,6 +285,7 @@ public
         }
         return sb.toString();
     }
+    //EJ05 Ventana Cursos disponibles
     public String cursosDispoV(int edad, String genero) {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= nroEscuelas; i++) {

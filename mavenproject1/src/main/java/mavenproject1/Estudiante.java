@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Estudiante extends Persona implements Serializable {
 private
-    Inscripcion[] inscrip = new Inscripcion[50];  //to Inscripcion
+    Inscripcion[] inscrip = new Inscripcion[51];  //to Inscripcion
     int nroInscrip;
     String estado;
 public
@@ -15,6 +15,7 @@ public
         nroInscrip = 0;
         estado = "habilitado";
     }
+public
     Estudiante(String a,String b,String c,int e,int d,String g) {
         nombre = a;
         paterno = b;

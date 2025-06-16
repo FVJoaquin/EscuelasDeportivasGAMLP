@@ -4,6 +4,7 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
 import mavenproject1.Main;
 import mavenproject1.Curso;
 import mavenproject1.Director;
@@ -11,12 +12,17 @@ import mavenproject1.EscuelaDeportiva;
 import mavenproject1.GAMLP;
 
 public class FormularioAgregaEscuela extends javax.swing.JFrame {
+    private VentanaPrincipal ventanaP;
     private GAMLP Gamlp;
     public FormularioAgregaEscuela() {
-        initComponents();
         setTitle("Agregar Nueva Escuela");
         setLocationRelativeTo(null);
         setSize(580, 400);
+        initComponents();
+    }
+    public FormularioAgregaEscuela(VentanaPrincipal vp) {
+        this.ventanaP = vp;
+        initComponents();
     }
 
     /**
@@ -75,7 +81,7 @@ public class FormularioAgregaEscuela extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnExit.setBackground(new java.awt.Color(255, 0, 51));
-        btnExit.setText("SALIR");
+        btnExit.setText("EXIT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -353,37 +359,53 @@ public class FormularioAgregaEscuela extends javax.swing.JFrame {
     }//GEN-LAST:event_textfieldEdadDActionPerformed
 
     private void btnAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionActionPerformed
-        // TODO add your BOTON ACCION code here:
-        //ESCUELA
-        String nomEsc = textfieldNombreE.getText();
-        String dirEsc = textfieldDireccionE.getText();
-        int distrito = Integer.parseInt(textfieldDistritoE.getText());
-        EscuelaDeportiva nuevaEsc = new EscuelaDeportiva(nomEsc,dirEsc,distrito);
-        //DIRECTOR
-        String nomDir = textfieldNombreD.getText();
-        String patDir = textfieldPaternoD.getText();
-        String matDir = textfieldMaternoD.getText();
-        int carnetD = Integer.parseInt(textfieldCarnetD.getText());
-        int edadD = Integer.parseInt(textfieldEdadD.getText());
-        String genD = textfieldGeneroD.getText();
-        String fIniD = textfieldFiniD.getText();
-        String fFinD = textfieldFfinD.getText();
-        Director nuevoDir = new Director(nomDir,patDir,matDir,edadD,carnetD,genD,fIniD,fFinD);
-        //CURSO
-        String nomC = textfieldNombreC.getText();
-        String depC = textfieldDeporteC.getText();
-        String genC = textfieldGeneroC.getText();
-        int ed1 = Integer.parseInt(textfieldRangoEdad1C.getText());
-        int ed2 = Integer.parseInt(textfieldRangoEdad2C.getText());
-        int cupoC = Integer.parseInt(textfieldCupoC.getText());
-        String hIni = textfieldHorario1C.getText();
-        String hFin = textfieldHorario2C.getText();
-        String dia1C = textfieldDia1C.getText();
-        String dia2C = textfieldDia2C.getText();
-        Curso nuevoCur = new Curso(nomC,depC,genC,ed1,ed2,cupoC,hIni,hFin,dia1C,dia2C);
-        //AGREGAR
-        Main.Gamlp.agregarEscuela(nuevaEsc,nuevoDir,nuevoCur);
-        System.out.println("total: "+Main. Gamlp.getNroEscuelas());
+        // TODO add your BOTON ACCION code here:        
+    try {
+        // === ESCUELA ===
+        String nomEsc = textfieldNombreE.getText().trim();
+        String dirEsc = textfieldDireccionE.getText().trim();
+        int distrito = Integer.parseInt(textfieldDistritoE.getText().trim());
+        EscuelaDeportiva nuevaEsc = new EscuelaDeportiva(nomEsc, dirEsc, distrito);
+
+        // === DIRECTOR ===
+        String nomDir = textfieldNombreD.getText().trim();
+        String patDir = textfieldPaternoD.getText().trim();
+        String matDir = textfieldMaternoD.getText().trim();
+        int carnetD = Integer.parseInt(textfieldCarnetD.getText().trim());
+        int edadD = Integer.parseInt(textfieldEdadD.getText().trim());
+        String genD = textfieldGeneroD.getText().trim();
+        String fIniD = textfieldFiniD.getText().trim();
+        String fFinD = textfieldFfinD.getText().trim();
+        Director nuevoDir = new Director(nomDir, patDir, matDir, edadD, carnetD, genD, fIniD, fFinD);
+
+        // === CURSO ===
+        String nomC = textfieldNombreC.getText().trim();
+        String depC = textfieldDeporteC.getText().trim();
+        String genC = textfieldGeneroC.getText().trim();
+        int ed1 = Integer.parseInt(textfieldRangoEdad1C.getText().trim());
+        int ed2 = Integer.parseInt(textfieldRangoEdad2C.getText().trim());
+        int cupoC = Integer.parseInt(textfieldCupoC.getText().trim());
+        String hIni = textfieldHorario1C.getText().trim();
+        String hFin = textfieldHorario2C.getText().trim();
+        String dia1C = textfieldDia1C.getText().trim();
+        String dia2C = textfieldDia2C.getText().trim();
+        Curso nuevoCur = new Curso(nomC, depC, genC, ed1, ed2, cupoC, hIni, hFin, dia1C, dia2C);
+
+        // === AGREGAR A GMLP ===
+        Main.Gamlp.agregarEscuela(nuevaEsc, nuevoDir, nuevoCur);
+        System.out.println("Total escuelas: " + Main.Gamlp.getNroEscuelas());
+
+        // Mensaje de confirmación
+        JOptionPane.showMessageDialog(this, "¡Escuela agregada con éxito!");
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Error: verifica que todos los campos numéricos tengan valores válidos.", "Entrada inválida", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Ha ocurrido un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+
+
     }//GEN-LAST:event_btnAccionActionPerformed
 
     /**

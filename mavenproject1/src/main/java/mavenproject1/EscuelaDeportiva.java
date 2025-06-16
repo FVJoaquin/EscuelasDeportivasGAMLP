@@ -15,7 +15,7 @@ private
     Director dir;
     Entrenador[] plantel = new Entrenador[51];
     int nroEntrenadores,nroCuposEntren;
-    Estudiante[] ests = new Estudiante[3001];
+    Estudiante[] ests = new Estudiante[301];
     int nroEstudiantes,nroCuposEstud;
     Curso[] cursos = new Curso[51];
     int nroCursos;
@@ -186,7 +186,7 @@ public
         else
             System.out.println("no existen alumnos!");
      }
-     void mostrarDeportes() {
+    void mostrarDeportes() {
         System.out.println("Total deporte: "+nroDeportes);
         this.contaEstDeporte();
         for(int i=1;i<=nroDeportes;i++) {
@@ -265,7 +265,7 @@ public
                 
         }
     }
-//ventana
+// VENTANA
     public String mostrarEscV() {
         StringBuilder sb = new StringBuilder();
         sb.append("ESCUELA ").append(nombre)
@@ -289,8 +289,10 @@ public
     public String mostrarMinV() {
         return "Escuela " + nombre + " tiene " + nroCursos + " cursos.\n";
     }
+    public String mostrarMin2V() {
+        return "Escuela " + nombre+"\n";
+    }
     
-
     public String mejorCursoV() {
         int max = cursos[1].getNroInscripciones();
         int pos = 1;
@@ -308,8 +310,8 @@ public
     for (int i = 1; i <= nroCursos; i++) {
         if (ed >= cursos[i].getRangoEdad(1) && ed <= cursos[i].getRangoEdad(2)
             && cursos[i].getGenero().equalsIgnoreCase(ge)) {
-            sb.append(this.mostrarMinV());
-            sb.append(cursos[i].mostrarMin2V());
+            sb.append(this.mostrarMin2V());
+            sb.append(cursos[i].mostrarMin3V());
             sb.append("\n");
             encontrado = true;
         }

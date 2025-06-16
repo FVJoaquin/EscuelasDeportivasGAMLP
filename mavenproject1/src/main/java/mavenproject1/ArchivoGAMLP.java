@@ -11,7 +11,7 @@ private String nombreA;
 public  ArchivoGAMLP(String n) {
             nombreA = n;
         }
-// CREAR
+// CREAR SIN ARGS
 public void creacion() throws ClassNotFoundException,IOException {
             Scanner sc=new Scanner(System.in);
             File archivoFisico = new File(nombreA);
@@ -36,7 +36,7 @@ public void creacion() throws ClassNotFoundException,IOException {
             }
         }
 
-// GUARDAR 
+// GUARDAR DESDE VENTANA CON ARGS
 public void guardarNuevo(String nombreA, EscuelaDeportiva[] escs, int nroEscs,
         String[] deps, int[] contaDep, int nroDeps) {
     try (ObjectOutputStream archi = new ObjectOutputStream(new FileOutputStream(nombreA))) {
@@ -52,7 +52,7 @@ public void guardarNuevo(String nombreA, EscuelaDeportiva[] escs, int nroEscs,
     }
 }
 
-// LEER
+// LEER DESDE VENTANA
 public void leerNuevo(String nombreA) {
     try (ObjectInputStream archi = new ObjectInputStream(new FileInputStream(nombreA))) {
         EscuelaDeportiva[] escuelas = (EscuelaDeportiva[]) archi.readObject();
@@ -76,7 +76,7 @@ public void leerNuevo(String nombreA) {
     }
     System.out.println("Archivo leido correctamente.");
 }
-// CREAR EN VENTANA
+// CREAR DESDE VENTANA
 public void crearArchivoDesdeGUI(String ruta, boolean reiniciarSiExiste) {
     try {
         File archivoFisico = new File(ruta);

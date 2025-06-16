@@ -35,6 +35,7 @@ public class FormRutaArchivo extends javax.swing.JFrame {
 
         jLabel1.setText("textooo");
 
+        btnExit.setBackground(new java.awt.Color(255, 0, 51));
         btnExit.setText("EXIT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
