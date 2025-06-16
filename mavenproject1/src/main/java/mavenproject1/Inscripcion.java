@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
 
-public class Inscripcion {
+public class Inscripcion implements Serializable{
 private
     Estudiante e;
     String curso;

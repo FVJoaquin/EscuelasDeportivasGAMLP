@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
-import java.io.Serializable;
+import java.io.*;
 
 public class Director extends Persona implements Serializable {
 private

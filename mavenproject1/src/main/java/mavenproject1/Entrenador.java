@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
 
-public class Entrenador extends Persona {
+public class Entrenador extends Persona implements Serializable {
 private
     String fechaInicio,fechaFin;
-    Curso[] cursos = new Curso[30];
+    String[] cursos = new String[11];
     int nroCursos;
 public
     Entrenador() {
@@ -39,11 +40,14 @@ public
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
-    public Curso getCurso(int i) {
-        return cursos[i];
+    public String getCurso(String c) {
+        for(int i=1;i<=nroCursos;i++)
+            if(cursos[i].equals(c))
+                return cursos[i];
+        return "Error";
     }
-    public void setCurso(Curso curs,int i) {
-        this.cursos[i] = curs;
+    public void setCurso(String cursillo,int i) {
+        this.cursos[i] = cursillo;
     }
     public int getNroCursos() {
         return nroCursos;
@@ -61,6 +65,6 @@ public
     void mostrarCursos() {
         if(nroCursos != 0)
             for(int i=1;i<=nroCursos;i++)
-                cursos[i].mostrar();
+                System.out.print(cursos[i]+" ");
     }
 }

@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
-import java.io.Serializable;
+import java.io.*;
 
 public class EscuelaDeportiva implements Serializable  {
 private
     String nombre,direccion;
     int distrito;
     String[] deportes = new String[51];
+    int[] contaDeporte = new int[51];
     int nroDeportes;
     Director dir;
     Entrenador[] plantel = new Entrenador[51];
@@ -18,15 +19,13 @@ private
     int nroEstudiantes,nroCuposEstud;
     Curso[] cursos = new Curso[51];
     int nroCursos;
-    Recurso[] recursos = new Recurso[101];
-    int nroRecursos;
 public
     EscuelaDeportiva() {
         nombre = "escuela 001";
         direccion = "calle 1";
         distrito = 10;
         dir = new Director();
-        nroDeportes = nroEntrenadores = nroEstudiantes = nroCursos = nroRecursos = 0;
+        nroDeportes = nroEntrenadores = nroEstudiantes = nroCursos = 0;
         nroCuposEntren = 50;
         nroCuposEstud = 3000;
     }
@@ -35,7 +34,7 @@ public
         nombre = nom;
         direccion = dir;
         distrito = dist;
-        nroDeportes = nroEntrenadores = nroEstudiantes = nroCursos = nroRecursos = 0;
+        nroDeportes = nroEntrenadores = nroEstudiantes = nroCursos = 0;
         nroCuposEntren = 50;
         nroCuposEstud = 3000;
     }
@@ -64,6 +63,12 @@ public
     public void setDeportes(String dep,int i) {
         this.deportes[i] = dep;
     }
+    public int getContDeporte(int i) {
+        return contaDeporte[i];
+    }
+    public void setContDeporte(int num,int i) {
+        this.contaDeporte[i] = num;
+    }
     public int getNroDeportes() {
         return nroDeportes;
     }
@@ -76,11 +81,15 @@ public
     public void setDir(Director a) {
         this.dir = a;
     }
-    public Entrenador getPlantel(int i) {
-        return plantel[i];
+    public Entrenador getPlantel(int ciEnt) {
+        for(int i=1;i<=nroEntrenadores;i++)
+            if(plantel[i].getId()==ciEnt)
+                return plantel[i];
+        return new Entrenador();
     }
-    public void setPlantel(Entrenador nuevo,int i) {
-        this.plantel[i] = nuevo;
+    public void setPlantel(Entrenador nuevo) {
+        nroEntrenadores++;
+        this.plantel[nroEntrenadores+1] = nuevo;
     }
     public int getNroEntrenadores() {
         return nroEntrenadores;
@@ -118,7 +127,7 @@ public
                 if(cursos[i].getNombre().equals(cursoT))
                     return cursos[i];
         } catch(Exception e) {
-            System.out.println("Algo salio mal!!!");
+            System.out.println("No existe o algo salio mal!!!");
         } 
         return new Curso();
     }
@@ -128,24 +137,11 @@ public
     public void setCursos(Curso cursoN,int i) {
         this.cursos[i] = cursoN;
     }
-    
     public int getNroCursos() {
         return nroCursos;
     }
     public void setNroCursos(int nroCursos) {
         this.nroCursos = nroCursos;
-    }
-    public Recurso getRecursos(int i) {
-        return recursos[i];
-    }
-    public void setRecursos(Recurso nuevo,int i) {
-        this.recursos[i] = nuevo;
-    }
-    public int getNroRecursos() {
-        return nroRecursos;
-    }
-    public void setNroRecursos(int nroRecursos) {
-        this.nroRecursos = nroRecursos;
     }
 // METODOS bryan patty tancara
 public
@@ -154,8 +150,8 @@ public
                 " DISTRITO "+distrito);
         if(dir != null)
             dir.mostrar();
-        System.out.println(nroCursos+" cursos, "+nroEntrenadores+" entrenadores, "
-                +nroEstudiantes+" estudiantes.");
+        System.out.println("Resumen: "+nroDeportes+" deportes, "+nroCursos+" cursos, "+nroEntrenadores+
+                " entrenadores, "+nroEstudiantes+" estudiantes.");
     }
     void mostrarCursos() {
         if(nroCursos != 0) {
@@ -179,7 +175,7 @@ public
         else
             System.out.println("no existen entrenadores!");
     }
-     void mostrarEstudiantes() {
+    void mostrarEstudiantes() {
         if(nroEstudiantes != 0) {
             System.out.println("Total estudiantes: "+nroEstudiantes);
             for(int i=1;i<=nroEstudiantes;i++)  {
@@ -190,13 +186,21 @@ public
         else
             System.out.println("no existen alumnos!");
      }
+     void mostrarDeportes() {
+        System.out.println("Total deporte: "+nroDeportes);
+        this.contaEstDeporte();
+        for(int i=1;i<=nroDeportes;i++) {
+            System.out.println(deportes[i]+" = "+contaDeporte[i]+" est");
+        }
+     }
     void mostrarTodo() {
         mostrar();
         mostrarCursos();
+        mostrarDeportes();
         mostrarPlantel();
         mostrarEstudiantes();
     }
-    
+    // AGREGAR
     void inscribirEstudiante(Estudiante Est) {
         nroEstudiantes++; 
         ests[nroEstudiantes] = Est; 
@@ -204,6 +208,23 @@ public
     void agregarCurso(Curso curso) {
         nroCursos++;
         cursos[nroCursos] = curso;
+        agregaDepo(curso.getDeporte());
+    }
+    void agregaDepo(String x) {
+        //agrega deport si no existe en el array
+        int sw = 1;
+        int cont = 1;
+        while(sw==1) {
+            if(cont==nroDeportes)
+                sw++;           //llega al final del array, si no existe sw=2
+            if(deportes[cont].equals(x)) //
+                sw = sw+5;      //no agrega nada, ya existe
+            cont++;
+        }
+        if(sw==2) {
+            nroDeportes++;
+            deportes[nroDeportes] = x;
+        }
     }
     void agregarEntrenador(Entrenador ent) {
         nroEntrenadores++;
@@ -212,6 +233,92 @@ public
     void agregarDirector(Director dirNuevo) {
         this.setDir(dirNuevo);
     }
+    void contaEstDeporte() {
+        for(int i=1;i<=nroCursos;i++)
+            for(int j=1;j<=nroDeportes;j++) 
+                if(cursos[i].getDeporte().equals(deportes[j])) 
+                    contaDeporte[j]= contaDeporte[j] + cursos[i].getNroInscripciones();
+    }
+// metodos de ejercicio 4
+    void mejorCurso() {
+        int mayor=0;
+        for(int i=1;i<=nroCursos;i++)
+            if(cursos[i].getNroInscripciones()> mayor)
+                mayor = cursos[i].getNroInscripciones();
+        for(int j=1;j<=nroCursos;j++)
+            if(cursos[j].getNroInscripciones()== mayor)
+                cursos[j].mostrarMin1();
+    }
+    void mostrarMin() {
+        System.out.println(nombre+" "+"dir: "+direccion+
+                " DISTRITO "+distrito);
+    }
     
+// metodo de ejercicio 5
+    void dispo(int ed,String ge) {
+        for(int i=1;i<=nroCursos;i++) {
+            if(ed>=cursos[i].getRangoEdad(1) && ed<=cursos[i].getRangoEdad(2)
+            && cursos[i].getGenero().equals(ge)) {
+                mostrarMin();
+                cursos[i].mostrarMin2();
+            }
+                
+        }
+    }
+//ventana
+    public String mostrarEscV() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ESCUELA ").append(nombre)
+          .append(" | dir: ").append(direccion)
+          .append(" | DISTRITO ").append(distrito).append("\n");
+        sb.append("Resumen: ").append(nroDeportes).append(" deportes, ")
+          .append(nroCursos).append(" cursos, ")
+          .append(nroEntrenadores).append(" entrenadores, ")
+          .append(nroEstudiantes).append(" estudiantes.\n");
+        return sb.toString();
+    }
+    public String mostrarEstsEsc() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("COLEGIO ").append(nombre).append(" - Distrito ").append(distrito).append("\n");
+        sb.append("Total estudiantes: ").append(nroEstudiantes).append("\n");
+        for (int i = 1; i <= nroEstudiantes; i++)
+            sb.append(ests[i].mostrarVent()).append("\n");
+        sb.append("\n");
+        return sb.toString();
+    }
+    public String mostrarMinV() {
+        return "Escuela " + nombre + " tiene " + nroCursos + " cursos.\n";
+    }
+    
+
+    public String mejorCursoV() {
+        int max = cursos[1].getNroInscripciones();
+        int pos = 1;
+        for (int i = 2; i <= nroCursos; i++) {
+            if (cursos[i].getNroInscripciones() > max) {
+                max = cursos[i].getNroInscripciones();
+                pos = i;
+            }
+        }
+        return "Curso "+cursos[pos].getNombre()+": " +cursos[pos].getDeporte() + " con " + max + " estudiantes.\n";
+    }
+    public String dispoV(int ed, String ge) {
+    StringBuilder sb = new StringBuilder();
+    boolean encontrado = false;
+    for (int i = 1; i <= nroCursos; i++) {
+        if (ed >= cursos[i].getRangoEdad(1) && ed <= cursos[i].getRangoEdad(2)
+            && cursos[i].getGenero().equalsIgnoreCase(ge)) {
+            sb.append(this.mostrarMinV());
+            sb.append(cursos[i].mostrarMin2V());
+            sb.append("\n");
+            encontrado = true;
+        }
+    }
+    return sb.toString();
+}
+
+
+        
+     
     
 }

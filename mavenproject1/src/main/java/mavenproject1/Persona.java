@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
 
-public class Persona {
+public class Persona implements Serializable {
 protected
     String nombre,paterno,materno,genero,observaciones;
     int id,edad;

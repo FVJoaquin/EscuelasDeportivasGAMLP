@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.Serializable;
 
-public class Horario {
+public class Horario implements Serializable {
 private
     String horaInicio;
     String horaFin;

@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import java.io.File;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import mavenproject1.GAMLP;
+import mavenproject1.ArchivoGAMLP;
+import mavenproject1.Main;
+import static mavenproject1.Main.*;
 
 public class VentanaPrincipal extends JFrame {
     
     public VentanaPrincipal() {
         initComponents();
         setTitle("Sistema de Escuelas Deportivas GAMLP");
-        setSize(500, 400);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -29,18 +30,23 @@ public class VentanaPrincipal extends JFrame {
 
         titulo1 = new javax.swing.JLabel();
         btnAgregarEscuela = new javax.swing.JButton();
-        btnEscuela = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         titulo2 = new javax.swing.JLabel();
         btnAgregarCurso = new javax.swing.JButton();
         btnVerListaEscuelas = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btnAgregarCurso1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnAgregarCurso2 = new javax.swing.JButton();
+        ej03 = new javax.swing.JButton();
+        ej01 = new javax.swing.JButton();
+        ej02 = new javax.swing.JButton();
+        ej04 = new javax.swing.JButton();
+        ej05 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        titulo3 = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
+        btnLeer = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,13 +60,6 @@ public class VentanaPrincipal extends JFrame {
             }
         });
 
-        btnEscuela.setText("Agregar Entrenador");
-        btnEscuela.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEscuelaActionPerformed(evt);
-            }
-        });
-
         btnExit.setText("EXIT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +68,7 @@ public class VentanaPrincipal extends JFrame {
         });
 
         titulo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        titulo2.setText("Gestion Escuela");
+        titulo2.setText("Ejercicios");
 
         btnAgregarCurso.setText("Agregar Curso");
         btnAgregarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -86,34 +85,75 @@ public class VentanaPrincipal extends JFrame {
         });
 
         jButton1.setText("Ver Lista Estudiantes");
-
-        btnAgregarCurso1.setText("Agregar Curso");
-        btnAgregarCurso1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCurso1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ver Lista Estudiantes");
-
-        jButton3.setText("Ver Lista Entrenadores");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ej03.setText("Buscar escuelas por Distrito");
+        ej03.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ej03ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Ver Lista Cursos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ej01.setText("Ranking Deportes");
+        ej01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ej01ActionPerformed(evt);
             }
         });
 
-        btnAgregarCurso2.setText("Agregar Obs Estudiante");
-        btnAgregarCurso2.addActionListener(new java.awt.event.ActionListener() {
+        ej02.setText("Buscar por Apellido");
+        ej02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCurso2ActionPerformed(evt);
+                ej02ActionPerformed(evt);
+            }
+        });
+
+        ej04.setText("Mostar cursos con mas ests");
+        ej04.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ej04ActionPerformed(evt);
+            }
+        });
+
+        ej05.setText("Mostrar cursos disponibles");
+        ej05.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ej05ActionPerformed(evt);
+            }
+        });
+
+        titulo3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titulo3.setText("Persistencia");
+
+        btnCrear.setText("Crear Archivo");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+
+        btnLeer.setText("Cargar Archivo");
+        btnLeer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeerActionPerformed(evt);
+            }
+        });
+
+        btnGuardar.setText("Guardar Archivo");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar Archivo");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -129,7 +169,6 @@ public class VentanaPrincipal extends JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -141,29 +180,33 @@ public class VentanaPrincipal extends JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnAgregarEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(60, 60, 60)
-                                                .addComponent(btnVerListaEscuelas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 93, Short.MAX_VALUE)))
+                                                .addComponent(btnVerListaEscuelas, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(ej01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(ej02, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(ej04, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(ej03, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                                    .addComponent(ej05, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(titulo3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnLeer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 373, Short.MAX_VALUE)
+                        .addGap(0, 426, Short.MAX_VALUE)
                         .addComponent(btnExit)
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregarCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAgregarCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,21 +222,34 @@ public class VentanaPrincipal extends JFrame {
                     .addComponent(btnAgregarCurso)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titulo2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEscuela)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(btnAgregarCurso1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarCurso2)
-                    .addComponent(jButton4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(titulo2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ej01)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ej02)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ej03)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ej04)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ej05))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(titulo3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCrear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLeer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEliminar))))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnExit)
                 .addGap(22, 22, 22))
@@ -207,12 +263,6 @@ public class VentanaPrincipal extends JFrame {
         FormularioAgregaEscuela form1 = new FormularioAgregaEscuela();
         form1.setVisible(true);
     }//GEN-LAST:event_btnAgregarEscuelaActionPerformed
-
-    private void btnEscuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscuelaActionPerformed
-        // TODO add your BOTON ESCUELA code here:
-        FormularioEscuela form2 = new FormularioEscuela();
-        form2.setVisible(true);
-    }//GEN-LAST:event_btnEscuelaActionPerformed
     
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your BOTON EXIT code here:
@@ -224,28 +274,174 @@ public class VentanaPrincipal extends JFrame {
     }//GEN-LAST:event_btnAgregarCursoActionPerformed
 
     private void btnVerListaEscuelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerListaEscuelasActionPerformed
-        // TODO add your handling code here:
+        // TODO add your BOTON LISTAR ESCUELAS code here:
+        FormMostrar form0 = new FormMostrar();
+        form0.setTexto(Gamlp.mostrarV());
+        form0.setVisible(true);
+        
     }//GEN-LAST:event_btnVerListaEscuelasActionPerformed
 
-    private void btnAgregarCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCurso1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarCurso1ActionPerformed
+    private void ej03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ej03ActionPerformed
+        // TODO add your BOTON EJERCICIO 3 code here:
+        String input = JOptionPane.showInputDialog(this, "Ingrese el número de distrito:");
+        if (input != null) {
+            try {
+                int distrito = Integer.parseInt(input);
+                FormMostrar form = new FormMostrar();
+                form.setTexto(Gamlp.mostrarEj03Ventana(distrito));
+                form.setVisible(true);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un número válido.");
+            }
+        }
+    }//GEN-LAST:event_ej03ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void ej02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ej02ActionPerformed
+        // TODO add your BOTON EJERCICIO 2 code here:
+        String apellido = JOptionPane.showInputDialog(this, "Ingrese el apellido a buscar:");
+        if (apellido != null && !apellido.trim().isEmpty()) {
+            FormMostrar form = new FormMostrar();
+            form.setTexto(Gamlp.mostrarEj02Ventana(apellido));
+            form.setVisible(true);
+        }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ej02ActionPerformed
 
-    private void btnAgregarCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCurso2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarCurso2ActionPerformed
+    private void ej04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ej04ActionPerformed
+        // TODO add your BOTON EJERCICIO 4 code here:
+        FormMostrar form = new FormMostrar();
+        form.setTexto(Gamlp.mejoresCursosTexto());
+        form.setVisible(true);
 
-    /**
-     * @param args the command line arguments
-     */
+    }//GEN-LAST:event_ej04ActionPerformed
+
+    private void ej05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ej05ActionPerformed
+        // TODO add your BOTON EJERCICIO 5 code here:
+        try {
+            String edadStr = JOptionPane.showInputDialog("Ingrese la edad:");
+            int edad = Integer.parseInt(edadStr);
+            String genero = JOptionPane.showInputDialog("Ingrese el género (M/F):").toUpperCase();
+            FormMostrar form = new FormMostrar();
+            form.setTexto(Gamlp.cursosDispoV(edad, genero));
+            form.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Entrada inválida.");
+        }
+
+    }//GEN-LAST:event_ej05ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your BOTON LISTAR ESTUDS code here:
+        FormMostrar form0 = new FormMostrar();
+        form0.setTexto(Gamlp.mostrarEst());
+        form0.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ej01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ej01ActionPerformed
+        // TODO add your BOTON EJERCICIO 1 code here:
+        FormMostrar form = new FormMostrar();
+        form.setTexto(Gamlp.mostrarEj01Ventana());
+        form.setVisible(true);
+    }//GEN-LAST:event_ej01ActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        btnCrear.addActionListener(e -> {
+            String ruta = JOptionPane.showInputDialog(this, "Ingrese la ruta del nuevo archivo:", 
+                "D:/misEscuelas.dat");
+            if (ruta != null && !ruta.trim().isEmpty()) {
+                File archivoFisico = new File(ruta);
+                boolean reiniciar = false;
+                if (archivoFisico.exists()) {
+                    int respuesta = JOptionPane.showConfirmDialog(this,
+                        "El archivo ya existe.\n¿Deseas borrar su contenido?",
+                        "Archivo existente", JOptionPane.YES_NO_OPTION);
+
+                    reiniciar = (respuesta == JOptionPane.YES_OPTION);
+                }
+                ArchivoGAMLP archivo = new ArchivoGAMLP(ruta);
+                archivo.crearArchivoDesdeGUI(ruta, reiniciar);
+
+                String mensaje = archivoFisico.exists()
+                    ? (reiniciar ? "Archivo reiniciado exitosamente." : "El archivo ya existía. No se modificó.")
+                    : "Archivo creado exitosamente.";
+                new FormRutaArchivo(mensaje + "\n" + ruta).setVisible(true);
+            }
+        });
+
+        
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeerActionPerformed
+        // TODO add your handling code here:
+        btnLeer.addActionListener(e -> {
+            String ruta = JOptionPane.showInputDialog(this, "Ingrese la ruta para cargar:",
+                "D:/misEscuelas.dat");
+
+            if (ruta != null && !ruta.trim().isEmpty()) {
+                try {
+                    Main.miArchGuarda.leerNuevo(ruta);
+                    new FormRutaArchivo("Archivo cargado correctamente desde:\n" + ruta).setVisible(true);
+                } catch (Exception ex) {
+                    new FormRutaArchivo("Error al cargar el archivo:\n" + ex.getMessage()).setVisible(true);
+                }
+            }
+        });
+    }//GEN-LAST:event_btnLeerActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your BOTON GUARDAR code here:
+        btnGuardar.addActionListener(e -> {
+            String ruta = JOptionPane.showInputDialog(this, "Ingrese la ruta para guardar:",
+                "D:/misEscuelas.dat");
+
+            if (ruta != null && !ruta.trim().isEmpty()) {
+                try {
+                    Main.miArchGuarda.guardarNuevo(
+                        ruta,
+                        Main.Gamlp.getAllEscuelas(),
+                        Main.Gamlp.getNroEscuelas(),
+                        Main.Gamlp.getAllDeportes(),
+                        Main.Gamlp.getAllContDeportes(),
+                        Main.Gamlp.getNroDeportes()
+                    );
+                    new FormRutaArchivo("Archivo guardado correctamente en:\n" + ruta).setVisible(true);
+                } catch (Exception ex) {
+                    new FormRutaArchivo("Error al guardar el archivo:\n" + ex.getMessage()).setVisible(true);
+                }
+            }
+        });
+
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your BOTON ELIMINAR code here:
+        String ruta = JOptionPane.showInputDialog(this, 
+        "Ingrese la ruta del archivo .dat a eliminar:", 
+        "D:/misEscuelas.dat");
+        if (ruta != null && !ruta.trim().isEmpty()) {
+            File archivo = new File(ruta.trim());
+            if (archivo.exists()) {
+                int confirm = JOptionPane.showConfirmDialog(this, 
+                    "¿Seguro que desea eliminar el archivo?\n" + ruta, 
+                    "Confirmar eliminación", 
+                    JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    boolean eliminado = archivo.delete();
+                    if (eliminado) {
+                        JOptionPane.showMessageDialog(this, "Archivo eliminado correctamente.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No se pudo eliminar el archivo.");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "El archivo no existe.");
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -280,18 +476,23 @@ public class VentanaPrincipal extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCurso;
-    private javax.swing.JButton btnAgregarCurso1;
-    private javax.swing.JButton btnAgregarCurso2;
     private javax.swing.JButton btnAgregarEscuela;
-    private javax.swing.JButton btnEscuela;
+    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLeer;
     private javax.swing.JButton btnVerListaEscuelas;
+    private javax.swing.JButton ej01;
+    private javax.swing.JButton ej02;
+    private javax.swing.JButton ej03;
+    private javax.swing.JButton ej04;
+    private javax.swing.JButton ej05;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
+    private javax.swing.JLabel titulo3;
     // End of variables declaration//GEN-END:variables
 }

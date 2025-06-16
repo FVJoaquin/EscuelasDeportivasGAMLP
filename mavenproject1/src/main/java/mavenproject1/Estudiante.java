@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
 
-public class Estudiante extends Persona {
+public class Estudiante extends Persona implements Serializable {
 private
     Inscripcion[] inscrip = new Inscripcion[50];  //to Inscripcion
     int nroInscrip;
@@ -69,9 +70,13 @@ public
             c.agregarInsc(I);
             nroInscrip++;
             inscrip[nroInscrip] = I;
+            
         }
     }
-    
+// Ventana
+    String mostrarVent() {
+        return(nombre+" "+paterno+" "+materno+" "+edad+" "+genero);
+    }
     
     
     

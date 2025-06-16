@@ -51,7 +51,7 @@ public class Leer
       { return Long.MIN_VALUE;
       }
     }
-    
+    /*
     public static float datoFloat()
     { try
       { Float f=new Float(dato());
@@ -71,5 +71,6 @@ public class Leer
       { return Double.NaN;
       }
     }
+*/
   }  
 

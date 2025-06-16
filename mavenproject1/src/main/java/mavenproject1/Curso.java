@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mavenproject1;
+import java.io.*;
 
-public class Curso {
+public class Curso implements Serializable {
 private
     String nombre,deporte,genero;
     int[] rangoEdad = new int[3];
@@ -50,6 +51,7 @@ public
     public void setGenero(String g) {
         genero = g;
     }
+    //para rangoEdad: [1] = min, [2] = max.
     public int getRangoEdad(int i) {
         return rangoEdad[i];
     }
@@ -89,10 +91,14 @@ public
 // METODOS bryan patty tancara
 public
     void mostrar() {
-        System.out.println("CURSO "+nombre+" ("+deporte+" "+genero+" "+
-                rangoEdad[1]+"-"+rangoEdad[2]+" anos) Entrenador: "+
-                e.getNombreCompleto()+", "+nroInscripciones+" alumnos");
-        }
+        System.out.print("CURSO "+nombre+" ("+deporte+" "+genero+" "+
+                rangoEdad[1]+"-"+rangoEdad[2]+" anos) ");
+        if(e!=null)
+            System.out.print("Entrenador: "+e.getNombreCompleto()+", ");
+        else
+            System.out.print("s/Entrenador!, ");
+        System.out.println(nroInscripciones+" alumnos");
+    }
     void mostrarEntrenador() {
         if(e != null)
             e.mostrar();
@@ -106,7 +112,6 @@ public
         else
             System.out.println("no existen alumnos!");
     }
-    
     void mostrarTodo() {
         mostrar();
         mostrarEntrenador();
@@ -118,7 +123,7 @@ public
             inscrip[nroInscripciones] = I;
         }
     }
-    void llenar() {
+    /*void llenar() {
         System.out.print("nombre Curso: "); setNombre(Leer.dato());
         System.out.print("Deporte: ");      setDeporte(Leer.dato());
         System.out.print("Genero: ");       setGenero(Leer.dato());
@@ -127,11 +132,27 @@ public
         System.out.print("cupo estuds: ");  setCantidadCupo(Leer.datoInt());
         System.out.print("nombre Curso: "); setNombre(Leer.dato());
         System.out.print("nombre Curso: "); setNombre(Leer.dato());
-    }
+    }*/
     void asignarEntrenador(Entrenador ent) {
         e = ent;
-        e.setCurso(this,e.getNroCursos()+1);
         e.setNroCursos(e.getNroCursos()+1);
+        e.setCurso(this.getNombre(),e.getNroCursos());
+    }
+    // ejercicio 4
+    void mostrarMin1() {
+        System.out.print(">> ");
+        System.out.println(deporte+" "+genero+" ("+rangoEdad[1]+"-"+rangoEdad[2]+
+                " anos) "+nroInscripciones+" ests.");
+    }
+    // ejercicio 5
+    void mostrarMin2() {
+        System.out.print("["+nombre+"] ");
+        System.out.println(deporte+" "+genero+
+                " ("+rangoEdad[1]+"-"+rangoEdad[2]+" anos) ");
+    }
+// VENTANA
+    public String mostrarMin2V() {
+        return "Curso: " + nombre + " (" + genero + ", edades " + getRangoEdad(1) + "-" + getRangoEdad(2) + ")\n";
     }
     
 }
